@@ -1,0 +1,23 @@
+head {
+  display: none;
+}
+
+* {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+main {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.inputPanel {
+  border: 1px solid black;
+  width: 25vw;
+}
+
+.results {
+  border: 1px solid black;
+  width: 70vw;
+}
