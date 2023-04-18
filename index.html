@@ -9,27 +9,41 @@
   <script src="./Assets/script.js"></script>
 </head>
 <body>
-  <header>Weather Dashboard</header>
+  <header>
+    <h1>Weather Dashboard</h1>
+  </header>
   <main>
 
     <div class="inputPanel">
 
-      <div class="searchBase">Search Bar, input, and button go in here</div>
+      <div class="searchBase">
+        <h2>Search by City</h2>
+        <input id="city" placeholder="Enter City">
+        <button id="search">Search</button>
+      </div>
 
-      <div class="searchCollection">Previously searched cities are collected/displayed here.</div>
+      <div class="searchCollection">
+        <h2>Recently Searched:</h2>
+        <!-- divs will be appended in js here -->
+      </div>
     </div>
 
 
     <div class="results">
     
       <div class="currentConditions">
-        Current weather of selected city goes here
+        <h2>"Current City"</h2>
       </div>
-
-      <div class="fiveDay">
-        Five day forecast of selected city goes here.
+      <div id="future">
+        <h2>Five Day Forecast:</h2>
+        <div class="fiveDay">
+          <div id="day1">day1</div>
+          <div id="day2">day2</div>
+          <div id="day3">day3</div>
+          <div id="day4">day4</div>
+          <div id="day5">day5</div>
+        </div>
       </div>
-
     </div>
 
 
