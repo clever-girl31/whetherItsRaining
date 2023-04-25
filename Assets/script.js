@@ -130,6 +130,7 @@ searchButton.addEventListener('click', function() {
             localStorage.setItem("Cities", lastSearch + ", " + cityHist)
           }
 
+          //! create button for lastSearch
           
         })
       .catch(error => (console.error("error fetching")))
@@ -146,7 +147,7 @@ console.log(searchCollectionList[0])
 var listContainer = document.querySelector(".searchCollection")
 console.log(listContainer)
 
-// ! figureout how to make labeltext = search input. buttonlabel[i] equals second character?
+// creates buttons for each stored city with the same click listener
 for (i = 0; i < searchCollectionList.length; i++) {
   city[i] = document.createElement("button")
   city[i].textContent = searchCollectionList[i]
