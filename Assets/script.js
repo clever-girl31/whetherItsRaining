@@ -1,15 +1,20 @@
+// create search button
 var searchButton = document.getElementById('search')
+// assign what happens when search is clicked
 searchButton.addEventListener('click', function() {
   var input = document.getElementById('city')
   var userCity = input.value
-  fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + userCity + '&limit=1&appid=a5c9bbc780a6d5f3b81b7c2576a5552c')
+  // convert city into long and lat
+  fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + userCity + '&limit=1&appid=a5c9bbc780a6d5f3b81b7c2576a5552c')
     .then(response => response.json())
     .then(response => {
       var lat = response[0].lat
       var lon = response[0].lon
+      // feed long and lat into actual weather api
       fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=a5c9bbc780a6d5f3b81b7c2576a5552c&units=imperial')
         .then(response => response.json())
         .then(response => {
+          // create variables for respsonses
           var cityData = {
             city: response.city.name,
             date0: "(" + response.list[0].dt_txt.slice(0, 10) + ")",
@@ -48,7 +53,6 @@ searchButton.addEventListener('click', function() {
           var resultCity = document.getElementById("searchedCity")
           resultCity.textContent = cityData.city
           // display icon
-          // !make it an actual icon
           var resultIcon = document.getElementById("icon0")
           resultIcon.innerHTML = cityData.icon0
           // current date
@@ -64,6 +68,9 @@ searchButton.addEventListener('click', function() {
           var humid0 = document.getElementById("humid0")
           humid0.textContent = cityData.humid0
 
+          // make sub header appear
+          var fiveDayHeader = document.getElementById("fiveDayHeader")
+          fiveDayHeader.textContent = "Five Day Forecast:"
           // five day forecast
           var date1 = document.getElementById("date1")
           date1.textContent = cityData.date1
@@ -130,16 +137,16 @@ searchButton.addEventListener('click', function() {
             localStorage.setItem("Cities", lastSearch + ", " + cityHist)
           }
 
-          // creates button for city that was searched so it appears without needing to refresh page.
+          // items from local storage only appear on refresh. below code creates button for city that was searched so it appears without needing to refresh page. when refreshed, this button disappears and is replaced with button created from local storage data
           pushLast = document.createElement('button')
           pushLast.textContent = lastSearch
           var pushLastCont = document.getElementById('pushLastCont')
           pushLastCont.appendChild(pushLast)
-          // create event listener so button is usable
+          // create event listener so button is usable. same basic function as above but does not save to local storage.
           pushLast.addEventListener('click', function () {
             var input = document.getElementById('city')
             var userCity = input.value
-            fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + userCity + '&limit=1&appid=a5c9bbc780a6d5f3b81b7c2576a5552c')
+            fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + userCity + '&limit=1&appid=a5c9bbc780a6d5f3b81b7c2576a5552c')
               .then(response => response.json())
               .then(response => {
                 var lat = response[0].lat
@@ -272,22 +279,23 @@ searchButton.addEventListener('click', function() {
     .catch(error => (console.error("error fetching")))  
 })
 
-// makes saved cities appear in recently searched section
+// turns list of cities (string format) in localstorage into a variable
 var savedCities = localStorage.getItem("Cities")
-console.log(savedCities)
+// splits city list string into an array
 var searchCollectionList = savedCities.split(", ")
-console.log(searchCollectionList[0])
+// creates variable for parent container
 var listContainer = document.querySelector(".searchCollection")
-console.log(listContainer)
 
-// creates buttons for each stored city with the same click listener
+// creates buttons for each stored city with the same click listener.
+// loops until there are as many buttons as list items
 for (i = 0; i < searchCollectionList.length; i++) {
   city[i] = document.createElement("button")
   city[i].textContent = searchCollectionList[i]
   listContainer.appendChild(city[i])
   city[i].addEventListener("click", function () {
+    // same basic function that has been called before to display weather data one page
     var buttonLabel = this.textContent
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + buttonLabel + '&limit=1&appid=a5c9bbc780a6d5f3b81b7c2576a5552c')
+    fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + buttonLabel + '&limit=1&appid=a5c9bbc780a6d5f3b81b7c2576a5552c')
       .then(response => response.json())
       .then(response => {
         var lat = response[0].lat
@@ -334,7 +342,6 @@ for (i = 0; i < searchCollectionList.length; i++) {
             var resultCity = document.getElementById("searchedCity")
             resultCity.textContent = cityData.city
             // display icon
-            // !make it an actual icon
             var resultIcon = document.getElementById("icon0")
             resultIcon.innerHTML = cityData.icon0
             // current date
