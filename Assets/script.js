@@ -18,7 +18,7 @@ searchButton.addEventListener('click', function() {
             date3: "(" + response.list[24].dt_txt.slice(0, 10) + ")",
             date4: "(" + response.list[32].dt_txt.slice(0, 10) + ")",
             date5: "(" + response.list[39].dt_txt.slice(0, 10) + ")",
-            icon0: "<img src='https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + ".png' width='50' height='50'>",
+            icon0: "<img src='https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + ".png' width='100' height='100'>",
             icon1: "<img src='https://openweathermap.org/img/wn/" + response.list[8].weather[0].icon + ".png' width='50' height='50'>",
             icon2: "<img src='https://openweathermap.org/img/wn/" + response.list[16].weather[0].icon + ".png' width='50' height='50'>",
             icon3: "<img src='https://openweathermap.org/img/wn/" + response.list[24].weather[0].icon + ".png' width='50' height='50'>",
@@ -155,7 +155,7 @@ searchButton.addEventListener('click', function() {
                       date3: "(" + response.list[24].dt_txt.slice(0, 10) + ")",
                       date4: "(" + response.list[32].dt_txt.slice(0, 10) + ")",
                       date5: "(" + response.list[39].dt_txt.slice(0, 10) + ")",
-                      icon0: "<img src='https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + ".png' width='50' height='50'>",
+                      icon0: "<img src='https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + ".png' width='100' height='100'>",
                       icon1: "<img src='https://openweathermap.org/img/wn/" + response.list[8].weather[0].icon + ".png' width='50' height='50'>",
                       icon2: "<img src='https://openweathermap.org/img/wn/" + response.list[16].weather[0].icon + ".png' width='50' height='50'>",
                       icon3: "<img src='https://openweathermap.org/img/wn/" + response.list[24].weather[0].icon + ".png' width='50' height='50'>",
@@ -199,7 +199,10 @@ searchButton.addEventListener('click', function() {
                     // current humidity
                     var humid0 = document.getElementById("humid0")
                     humid0.textContent = cityData.humid0
-
+                    
+                    // make sub header appear
+                    var fiveDayHeader = document.getElementById("fiveDayHeader")
+                    fiveDayHeader.textContent = "Five Day Forecast:"
                     // five day forecast
                     var date1 = document.getElementById("date1")
                     date1.textContent = cityData.date1
@@ -301,7 +304,7 @@ for (i = 0; i < searchCollectionList.length; i++) {
               date3: "(" + response.list[24].dt_txt.slice(0, 10) + ")",
               date4: "(" + response.list[32].dt_txt.slice(0, 10) + ")",
               date5: "(" + response.list[39].dt_txt.slice(0, 10) + ")",
-              icon0: "<img src='https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + ".png' width='50' height='50'>",
+              icon0: "<img src='https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + ".png' width='100' height='100'>",
               icon1: "<img src='https://openweathermap.org/img/wn/" + response.list[8].weather[0].icon + ".png' width='50' height='50'>",
               icon2: "<img src='https://openweathermap.org/img/wn/" + response.list[16].weather[0].icon + ".png' width='50' height='50'>",
               icon3: "<img src='https://openweathermap.org/img/wn/" + response.list[24].weather[0].icon + ".png' width='50' height='50'>",
@@ -346,6 +349,10 @@ for (i = 0; i < searchCollectionList.length; i++) {
             // current humidity
             var humid0 = document.getElementById("humid0")
             humid0.textContent = cityData.humid0
+
+            // make sub header appear
+            var fiveDayHeader = document.getElementById("fiveDayHeader")
+            fiveDayHeader.textContent = "Five Day Forecast:"
 
             // five day forecast
             var date1 = document.getElementById("date1")
